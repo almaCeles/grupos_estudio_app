@@ -21,7 +21,6 @@ class HomePage extends StatelessWidget {
          )
 
       ],
-      
        ),
        bottomNavigationBar: CustomNavigationBar(),
        );
