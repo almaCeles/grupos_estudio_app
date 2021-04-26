@@ -17,7 +17,8 @@ class CustomNavigationBar extends StatelessWidget {
         BottomNavigationBarItem(
 
           icon: Icon(Icons.home),
-          label: 'Home' 
+          label: 'Home' ,
+          
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.book),
@@ -32,6 +33,7 @@ class CustomNavigationBar extends StatelessWidget {
           label: 'Configuraciones' 
         ),
       ],
+      
     );
   }
 }

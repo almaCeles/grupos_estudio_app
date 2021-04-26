@@ -1,0 +1,20 @@
+{
+    "nombreApp" : "Componentes",
+    "rutas" : [
+        {
+            "ruta" : "misCursos",
+            "icon" : "folder_open",
+            "texto": "Cursoa"
+        }, 
+        {
+            "ruta" : "animatedContainer",
+            "icon" : "donut_large",
+            "texto": "Animated Container"
+        },
+        {
+            "ruta" : "list",
+            "icon" : "list",
+            "texto": "Listas y Scroll"
+        }
+    ]
+}
