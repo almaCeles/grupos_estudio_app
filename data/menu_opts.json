@@ -3,18 +3,23 @@
     "rutas" : [
         {
             "ruta" : "misCursos",
-            "icon" : "folder_open",
-            "texto": "Cursoa"
+            "icon" : "donut_large",
+            "texto": "Arreglos"
         }, 
         {
             "ruta" : "animatedContainer",
             "icon" : "donut_large",
-            "texto": "Animated Container"
+            "texto": "Present simple"
         },
         {
             "ruta" : "list",
             "icon" : "list",
-            "texto": "Listas y Scroll"
+            "texto": "Ecuaciones Primer Grado"
+        },
+         {
+            "ruta" : "inputs",
+            "icon" : "input",
+            "texto": "Derivadas"
         }
     ]
 }

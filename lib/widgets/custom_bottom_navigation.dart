@@ -6,31 +6,30 @@ class CustomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-     // showSelectedLabels: false,
-      showUnselectedLabels: false,
+      //showSelectedLabels: false,
+      showUnselectedLabels: true,
       selectedItemColor: Colors.yellow[700],
-      backgroundColor: Color.fromRGBO(55, 57, 84, 1),
-      unselectedItemColor: Color.fromRGBO(116, 117, 152, 1),
-      currentIndex: 1, 
+      backgroundColor: Colors.black,
+      unselectedItemColor: Colors.black,
+      currentIndex: 0, 
       
       items: [
         BottomNavigationBarItem(
-
-          icon: Icon(Icons.home),
+          icon: Icon(Icons.home,  size: 30,),
           label: 'Home' ,
           
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.book),
+          icon: Icon(Icons.book, size: 30,),
           label: 'Cursos' 
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.help),
+          icon: Icon(Icons.help, size: 30,),
           label: 'Ayuda' 
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.adjust),
-          label: 'Configuraciones' 
+          icon: Icon(Icons.settings, size: 30,),
+          label: 'Ajustes' 
         ),
       ],
       
