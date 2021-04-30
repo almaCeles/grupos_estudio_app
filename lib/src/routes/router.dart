@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:grupos_estudio_app/screens/ContactosGrupo.dart';
+import 'package:grupos_estudio_app/screens/PantallaLoginTemp.dart';
+import 'package:grupos_estudio_app/screens/PrincipalGrupo.dart';
 import 'package:grupos_estudio_app/src/pages/animated_container.dart';
 import 'package:grupos_estudio_app/src/pages/grupos.dart';
 import 'package:grupos_estudio_app/src/pages/input_page.dart';
@@ -15,7 +18,9 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
       'list'   : ( BuildContext context ) => ListaPage(),    
       'inputs' : ( BuildContext context ) => InputPage(),    
       'grupos' : (BuildContext contex ) => Grupos(),
-            
+      'usuarios':   (BuildContext contex ) => PantallaLoginTemp(),
+      'princGrupo': (BuildContext contex ) => PrincipalGrupo(),
+      'contactosGrupo' :(BuildContext contex ) => ContactosGrupo(),
           };
       }
       
