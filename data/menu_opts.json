@@ -20,6 +20,12 @@
             "ruta" : "inputs",
             "icon" : "input",
             "texto": "Derivadas"
+        },
+        
+        {
+            "ruta" : "usuarios",
+            "icon" : "input",
+            "texto": "usuarios"
         }
     ]
 }
