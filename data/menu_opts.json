@@ -1,0 +1,25 @@
+{
+    "nombreApp" : "Componentes",
+    "rutas" : [
+        {
+            "ruta" : "misCursos",
+            "icon" : "donut_large",
+            "texto": "Arreglos"
+        }, 
+        {
+            "ruta" : "animatedContainer",
+            "icon" : "donut_large",
+            "texto": "Present simple"
+        },
+        {
+            "ruta" : "list",
+            "icon" : "list",
+            "texto": "Ecuaciones Primer Grado"
+        },
+         {
+            "ruta" : "inputs",
+            "icon" : "input",
+            "texto": "Derivadas"
+        }
+    ]
+}
