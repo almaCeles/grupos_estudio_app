@@ -12,7 +12,7 @@ class _ListaPageState extends State<ListaPage> {
 
   ScrollController _scrollController = new ScrollController();
 
-  List<int> _listaNumeros = new List();
+  List<int> _listaNumeros = new List.empty();
   int _ultimoItem = 0;
   bool _isLoading = false;
 

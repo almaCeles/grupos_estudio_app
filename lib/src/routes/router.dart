@@ -3,6 +3,7 @@ import 'package:grupos_estudio_app/screens/ContactosGrupo.dart';
 import 'package:grupos_estudio_app/screens/PantallaLoginTemp.dart';
 import 'package:grupos_estudio_app/screens/PrincipalGrupo.dart';
 import 'package:grupos_estudio_app/src/pages/animated_container.dart';
+import 'package:grupos_estudio_app/src/pages/explorar.dart';
 import 'package:grupos_estudio_app/src/pages/grupos.dart';
 import 'package:grupos_estudio_app/src/pages/input_page.dart';
 import 'package:grupos_estudio_app/src/pages/listview_page.dart';
@@ -21,6 +22,7 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
       'usuarios':   (BuildContext contex ) => PantallaLoginTemp(),
       'princGrupo': (BuildContext contex ) => PrincipalGrupo(),
       'contactosGrupo' :(BuildContext contex ) => ContactosGrupo(),
+      'explorar'   :(BuildContext contex) => Explorar(),
           };
       }
       
