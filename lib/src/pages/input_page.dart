@@ -155,7 +155,7 @@ class _InputPageState extends State<InputPage> {
 
   List<DropdownMenuItem<String>> getOpcionesDropdown() {
 
-    List<DropdownMenuItem<String>> lista = new List();
+    List<DropdownMenuItem<String>> lista = new List.empty();
 
     _poderes.forEach( (poder){
 

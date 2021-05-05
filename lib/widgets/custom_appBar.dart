@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
 class CustomAppBar extends CustomClipper<Path> {
   @override
@@ -19,7 +18,6 @@ class CustomAppBar extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
-    // TODO: implement shouldReclip
     return false;
   }
 
