@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grupos_estudio_app/model/modeloSala.dart';
 import 'package:grupos_estudio_app/src/pages/contenidoSala.dart';
 
-
 class TarjetaTema extends StatelessWidget {
   const TarjetaTema({Key key, this.modeloS, this.miUsuario}) : super(key: key);
   final modeloSala modeloS;
