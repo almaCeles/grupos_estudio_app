@@ -1,7 +1,10 @@
+import 'dart:async';
+import '../../model/Post.dart';
+import '../fetch/fetchPost.dart';
+import '../../widgets/componenteAsync.dart';
 import 'package:flutter/material.dart';
 import 'package:grupos_estudio_app/model/modeloSala.dart';
 import 'package:grupos_estudio_app/widgets/TarjetaTema.dart';
-
 
 class Salas extends StatefulWidget {
   Salas({Key key, this.miUsuario}) : super(key: key);
@@ -12,6 +15,15 @@ class Salas extends StatefulWidget {
 }
 
 class _SalasState extends State<Salas> {
+  void initState() {
+    super.initState();
+    // getThemes();
+  }
+
+  // Future<Post> getThemes() async {
+  //   print("-----> si se ejecuto");
+  // }
+
   List<modeloSala> salas = [
     modeloSala(
         id: 1, name: "General", icon: "topico.svg", date: "12-Abril-2020"),
@@ -41,7 +53,9 @@ class _SalasState extends State<Salas> {
           color: Colors.white,
         ),
       ),
-      body: ListView.builder(
+      body:
+          //FetchPost(post: fetchPost()),
+          ListView.builder(
         itemCount: salas.length,
         itemBuilder: (context, index) => TarjetaTema(
           modeloS: salas[index],

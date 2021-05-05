@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MensajeRespuesta extends StatelessWidget {
-  const MensajeRespuesta({Key key}) : super(key: key);
-
+  const MensajeRespuesta({Key key, this.message, this.date}) : super(key: key);
+  final String message;
+  final String date;
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -23,7 +24,7 @@ class MensajeRespuesta extends StatelessWidget {
                   padding: const EdgeInsets.only(
                       left: 5, right: 80, top: 10, bottom: 20),
                   child: Text(
-                    "hey",
+                    message,
                     style: TextStyle(fontSize: 16),
                   ),
                 ),
@@ -33,7 +34,7 @@ class MensajeRespuesta extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "20:48",
+                          date,
                           style: TextStyle(fontSize: 13),
                         ),
                       ],
