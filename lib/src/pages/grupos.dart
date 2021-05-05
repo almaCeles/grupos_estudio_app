@@ -3,31 +3,56 @@ import 'package:grupos_estudio_app/widgets/custom_bottom_navigation.dart';
 import 'package:grupos_estudio_app/src/providers/menu_provider.dart';
 import 'package:grupos_estudio_app/src/utils/icono_string_util.dart';
 
-class Grupos extends StatelessWidget {
+class Grupos extends StatefulWidget {
+  Grupos({Key key}) : super(key: key);
+
+  @override
+  _GruposState createState() => _GruposState();
+}
+
+class _GruposState extends State<Grupos> with SingleTickerProviderStateMixin  {
   
+  TabController _tabBarOption;
+  @override
+  void initState() {
+    super.initState();
+    _tabBarOption = TabController(vsync: this, length: 2, initialIndex: 0);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-      
-      child: AppBar(
+      appBar:  AppBar(
+         title: Text('Grupos' ,style: TextStyle(color: Colors.white , fontSize: 20),),
          backgroundColor:  Color.fromRGBO(69, 79, 95, 1.0),
          flexibleSpace: Row( mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          Icon( Icons.people_alt , color: Color.fromRGBO(253, 167, 127, 1.0), size: 20,),
-          Text('Mis Grupos' , style: TextStyle(color: Colors.white , fontSize: 20), ),
-          Icon( Icons.group_work , color: Color.fromRGBO(253, 167, 127, 1.0), size: 20,),
-          Text('Grupos Creados ' , style: TextStyle(color: Colors.white , fontSize: 20),)
+    
+      ),
+       bottom: TabBar(
+          
+          indicatorColor:  Color.fromRGBO(253, 167, 127, 1.0),
+          controller: _tabBarOption,
+          tabs: [
+            Tab(
+                icon: Icon( Icons.people_alt , color: Color.fromRGBO(253, 167, 127, 1.0), size: 20,),
+                text: 'Mis Grupos',
+                iconMargin:  const EdgeInsets.only()
+            ),
+            Tab(
+              icon: Icon( Icons.group_work , color: Color.fromRGBO(253, 167, 127, 1.0), size: 20,),
+              text: 'Grupos Creados ',
+               iconMargin:  const EdgeInsets.only()
+            ),
+          ],
+        ),
+      ),
+      body:TabBarView(
+        controller: _tabBarOption,
+        children: [
+          _lista(),
+          _lista(),
         ],
       ),
-      ),
-      preferredSize: Size.fromHeight(kToolbarHeight + 50)),
-      body:Stack(
-        children: <Widget>[
-          _lista()
-        ],
-      ) ,
       bottomNavigationBar: CustomNavigationBar(),
     );
   }
