@@ -1,7 +1,7 @@
-import 'dart:async';
+/*import 'dart:async';
 import '../../model/Post.dart';
 import '../fetch/fetchPost.dart';
-import '../../widgets/componenteAsync.dart';
+import '../../widgets/componenteAsync.dart';*/
 import 'package:flutter/material.dart';
 import 'package:grupos_estudio_app/model/modeloSala.dart';
 import 'package:grupos_estudio_app/widgets/TarjetaTema.dart';

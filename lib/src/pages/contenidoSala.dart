@@ -78,51 +78,55 @@ class _ContenidoSala extends State<ContenidoSala> {
     return Stack(
       children: [
         Scaffold(
-          backgroundColor: Color(0xffFAFAF1),
-          appBar: AppBar(
-              leadingWidth: 90,
-              leading: InkWell(
-                  onTap: () {
-                    socket.dispose();
-                    Navigator.pop(context);
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+         backgroundColor: Color.fromRGBO(69, 79, 95, 1.0),
+         
+          body:Column(
+            children: [
+           Container(
+                  height: 200,
+                  //padding: EdgeInsets.only(top: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.arrow_back,
-                        size: 24,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                              icon: Icon(Icons.keyboard_backspace_sharp,
+                                  color: Colors.yellow[700], size: 30),
+                              onPressed: () {
+                                socket.dispose();
+                                Navigator.pop(context);
+                              }),
+                          IconButton(
+                              icon: Icon(Icons.settings,
+                                  color: Colors.yellow[700], size: 20),
+                              onPressed: () {})
+                        ],
                       ),
-                      CircleAvatar(
-                        child: SvgPicture.asset(
-                          "assets/topico.svg",
-                          color: Color(0xFFFDA77F),
-                          width: 37,
-                          height: 37,
-                        ),
-                        radius: 25,
-                        backgroundColor: Color(0xFF5B7298),
+                      Text(
+                         widget.modeloS.name,
+                        style: TextStyle(
+                            color: Color(0xFFFDA77F),
+                            fontFamily: 'Quicksand',
+                            fontSize: 25,
+                            fontWeight: FontWeight.w900),
                       ),
+                      Container(
+                        height: 100,
+                        //child: ,
+                      )
+                      
                     ],
-                  )),
-              title: Container(
-                child: Column(
-                  children: [
-                    Text(
-                      widget.modeloS.name,
-                      style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w100,
-                          color: Color(0xFFFDA77F)),
-                    ),
-                  ],
+                  ),
                 ),
-              )
-              // actions: [IconButton(icon: Icon(Icons.more), onPressed: () {})],
-              ),
-          body: Container(
-            height: MediaQuery.of(context).size.height,
+            
+           Container(
+           decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      color: Colors.blue[50]),
             width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height - 200,
             // child: WillPopScope(
             child: Column(
               children: [
@@ -250,6 +254,8 @@ class _ContenidoSala extends State<ContenidoSala> {
               // ),
             ),
           ),
+          ],
+          )
         )
       ],
     );

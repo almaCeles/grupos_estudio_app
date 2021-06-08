@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grupos_estudio_app/model/Post.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grupos_estudio_app/model/modeloSala.dart';
+/*import 'package:flutter_svg/flutter_svg.dart';
+import 'package:grupos_estudio_app/model/modeloSala.dart';*/
 import 'package:grupos_estudio_app/src/pages/contenidoSala.dart';
 import '../src/fetch/fetchPost.dart';
 

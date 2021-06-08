@@ -41,7 +41,7 @@ Widget bnNuevo(BuildContext context){
   return MaterialButton(
                   minWidth: 150.0,
                   height: 70.0,
-                  onPressed: () {},
+                  onPressed: () {Navigator.pushNamed(context, 'nuevoGrupo');},
                   color: Color.fromRGBO(91, 114, 152, 1.0),
                   child: Row( mainAxisAlignment: MainAxisAlignment.start,
                    mainAxisSize: MainAxisSize.min,
