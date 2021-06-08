@@ -44,6 +44,28 @@ class DBProvider{
             FOREIGN KEY(fk_usuario) REFERENCES usuarios(id) 
           );
 
+          CREATE TABLE salas(
+            id INTEGER PRIMARY KEY       NOT NULL,
+            title         TEXT      NOT NULL,
+            texto         TEXT,
+            link          text,
+            archivo       BLOB, 
+            admin         BOOLEAN       NOT NULL,
+            fk_curso      INTEGER       NOT NULL,
+            FOREIGN KEY(fk_curso) REFERENCES cursos(id) 
+          );
+
+          CREATE TABLE mensajes(
+            id INTEGER PRIMARY KEY       NOT NULL,
+            texto        TEXT,
+            link         blob,
+            archivo      blob , 
+            fk_sala      INTEGER       NOT NULL,
+            fk_usuario   INTEGER       NOT NULL.
+            FOREIGN KEY(fk_usuario) REFERENCES usuarios(id),
+            FOREIGN KEY(fk_sala) REFERENCES salas(id)
+          );
+
          ''');
        }
        );

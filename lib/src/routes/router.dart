@@ -10,6 +10,8 @@ import 'package:grupos_estudio_app/src/pages/listview_page.dart';
 import 'package:grupos_estudio_app/src/pages/login.dart';
 import 'package:grupos_estudio_app/src/pages/mis_cursos.dart';
 import 'package:grupos_estudio_app/src/pages/home_page.dart';
+import 'package:grupos_estudio_app/src/pages/nueva_tarjeta_tema.dart';
+import 'package:grupos_estudio_app/src/pages/nuevo_grupo.dart';
 import 'package:grupos_estudio_app/src/pages/registro.dart';
 
 
@@ -19,7 +21,7 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
       'registrar': (BuildContext context ) => Registro(),
       'home'    : ( BuildContext context ) => HomePage(),
       'misCursos'  : ( BuildContext context ) => MisCursos(),
-      'animatedContainer'   : ( BuildContext context ) => AnimatedContainerPage(),
+      'animate'   : ( BuildContext context ) => HomeScreen(),
       'list'   : ( BuildContext context ) => ListaPage(),    
       'inputs' : ( BuildContext context ) => InputPage(),    
       'grupos' : (BuildContext contex ) => Grupos(),
@@ -27,6 +29,9 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
       'princGrupo': (BuildContext contex ) => PrincipalGrupo(),
       'contactosGrupo' :(BuildContext contex ) => ContactosGrupo(),
       'explorar'   :(BuildContext contex) => Explorar(),
+      'tarjeta'    : (BuildContext contex) => NuevaTarjetaTema(),
+      'grupo'      :(BuildContext contex) => PrincipalGrupo(),
+      'nuevoGrupo' :(BuildContext contex) => NuevoGrupo(),
           };
       }
       
