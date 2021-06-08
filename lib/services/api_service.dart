@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:grupos_estudio_app/model/channel_model.dart';
 import 'package:grupos_estudio_app/model/video_model.dart';
-import 'package:grupos_estudio_app/src/utils/keys.dart';
+import 'package:grupos_estudio_app/services/keys.dart';
 import 'package:http/http.dart' as http;
 
 
