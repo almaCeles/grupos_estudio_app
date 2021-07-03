@@ -3,7 +3,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grupos_estudio_app/model/m_usuario.dart';
 import 'package:grupos_estudio_app/preferenciasUsuario/p_usuario.dart';
+import 'package:grupos_estudio_app/src/providers/decodificar_token.dart';
 //import 'package:grupos_estudio_app/widgets/custom_design.dart';
 import 'package:http/http.dart' as http;
 import  'package:shared_preferences/shared_preferences.dart';
@@ -18,7 +20,9 @@ class _LoginState extends State<Login> {
     bool _isLoading = false;
     final _formKey = GlobalKey<FormState>();
     final _prefs = new  PreferenciasUsuario();
+    MUsuario usuaro;
   User user = User('', '');
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -207,8 +211,11 @@ class _LoginState extends State<Login> {
          });
          _prefs.token=jsonResponse['accessToken'];
         // sharedPreferences.setString("token", jsonResponse['accessToken']);
-        // print(body);
+         print(decofificar(_prefs.token)['nombre']);
+       // print("soy el decodificado" + decofificar(_prefs.token));
+         //MUsuario.fromJson(decofificar(_prefs.token));
 
+         
          Navigator.pushNamed(context, 'home');
        }else{
           setState(() {

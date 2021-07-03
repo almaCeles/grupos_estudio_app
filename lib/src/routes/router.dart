@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grupos_estudio_app/screens/ContactosGrupo.dart';
 import 'package:grupos_estudio_app/screens/PantallaLoginTemp.dart';
 import 'package:grupos_estudio_app/screens/PrincipalGrupo.dart';
+import 'package:grupos_estudio_app/services/grupos.dart';
 import 'package:grupos_estudio_app/src/pages/animated_container.dart';
 import 'package:grupos_estudio_app/src/pages/explorar.dart';
 import 'package:grupos_estudio_app/src/pages/grupos.dart';
@@ -13,6 +14,9 @@ import 'package:grupos_estudio_app/src/pages/home_page.dart';
 import 'package:grupos_estudio_app/src/pages/nueva_tarjeta_tema.dart';
 import 'package:grupos_estudio_app/src/pages/nuevo_grupo.dart';
 import 'package:grupos_estudio_app/src/pages/registro.dart';
+import 'package:grupos_estudio_app/src/pages/unirse_a_grupo.dart';
+
+
 
 
 Map<String, WidgetBuilder> getApplicationRoutes() {
@@ -32,6 +36,8 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
       'tarjeta'    : (BuildContext contex) => NuevaTarjetaTema(),
       'grupo'      :(BuildContext contex) => PrincipalGrupo(),
       'nuevoGrupo' :(BuildContext contex) => NuevoGrupo(),
+      'nuevoGrupoCodigo' :(BuildContext contex) => UnirmeAgrupo(),
+      
           };
       }
       
