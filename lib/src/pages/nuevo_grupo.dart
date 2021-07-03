@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class NuevoGrupo extends StatefulWidget {
   NuevoGrupo({Key key}) : super(key: key);
@@ -9,8 +12,8 @@ class NuevoGrupo extends StatefulWidget {
 
 class _NuevoGrupoState extends State<NuevoGrupo> {
   var _nombre;
-  var _tematica;
-  var _etiquetaGrupo;
+  var _categoria;
+  var _cupo;
   List listIdem = [
     "Relajado", "Examenes", "Serio", "Noobs", "Avanzados"
   ];
@@ -79,9 +82,9 @@ class _NuevoGrupoState extends State<NuevoGrupo> {
                   Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: TextField(
-                    controller: TextEditingController(text: _tematica),
+                    controller: TextEditingController(text: _categoria),
                     onChanged: (value) {
-                      _tematica = value;
+                      _categoria = value;
                     },
                     
                     decoration: InputDecoration(
@@ -100,42 +103,39 @@ class _NuevoGrupoState extends State<NuevoGrupo> {
                   ),
                     ),
                     Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: DropdownButton(
-                    hint: Text('selecciona etiqueta: '),
-                    value: _etiquetaGrupo,
-                    onChanged: (newValue){
-                      setState(() {
-                        _etiquetaGrupo= newValue;
-                      });
-                    },
-                    items: listIdem.map((valueItem) {
-                      return DropdownMenuItem(
-                        value: valueItem,
-                        child: Text(valueItem)
-                        );
-                    }).toList()
-                    )
+                    padding: const EdgeInsets.all(16.0),
+                    child: TextFormField(
+                      controller: TextEditingController(text: _cupo),
+                      onChanged: (value) {
+                        _cupo = value;
+                      },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Esta Vacio';
+                        }
+                      },
+                      decoration: InputDecoration(
+                          icon: Icon(
+                            Icons.tab,
+                            color: Colors.blue,
+                          ),
+                          hintText: '¿cuantos integrantes pueden estar?',
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(16),
+                              borderSide: BorderSide(color: Colors.blue)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(16),
+                              borderSide: BorderSide(color: Colors.blue)),
+                          errorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(16),
+                              borderSide: BorderSide(color: Colors.red)),
+                          focusedErrorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(16),
+                              borderSide: BorderSide(color: Colors.red))),
                     ),
+                  ),
                     
-                    Padding(
-                      padding: EdgeInsets.all(50),
-                      child: DropdownButton(
-                    hint: Text('selecciona etiqueta: '),
-                    value: _etiquetaGrupo,
-                    onChanged: (newValue){
-                      setState(() {
-                        _etiquetaGrupo= newValue;
-                      });
-                    },
-                    items: listIdem.map((valueItem) {
-                      return DropdownMenuItem(
-                        value: valueItem,
-                        child: Text(valueItem)
-                        );
-                    }).toList(),
-                    )
-                    ),
+                   
                   
                   Padding(
                   padding: EdgeInsets.all(30),
@@ -152,8 +152,8 @@ class _NuevoGrupoState extends State<NuevoGrupo> {
                           ),
                           onPressed: ()  {
                             if (_formKey.currentState.validate()) {
-                           
-                           Navigator.pushNamed(context, 'grupo');
+                               nuevoGrupo();
+                           Navigator.pushNamed(context, 'home');
                           } else {
                             print("not ok");
                           }
@@ -177,7 +177,49 @@ class _NuevoGrupoState extends State<NuevoGrupo> {
        )
     );
   }
+
+  Future nuevoGrupo() async {
+    var url = Uri.http("127.0.0.1:5000", "/api/v1/new-group");
+    print(url);
+    Map<String, String> body = {
+      "nombreGrupo": _nombre,
+      "creador": "alma",
+      "carrera": "Ing Sistemas",
+      "categoria":_categoria ,
+      "cupo": _cupo
+    };
+    print(body);
+    Map<String, String> headers = {
+      "Context-Type": "application/json;charSet=UTF-8"
+    };
+    print(headers);
+    var jsonResponse;
+
+    var res = await http.post(url, headers: headers, body: body);
+
+    print(res.statusCode);
+
+    if (res.statusCode == 200) {
+      print("Dentro de 208");
+      jsonResponse = json.decode(res.body);
+      print(jsonResponse);
+
+      print("Response status: ${res.statusCode}");
+      print("Response status: ${res.body}");
+
+      if (jsonResponse != null) {
+      } else {
+        print("Response status : ${res.body}");
+      }
+      //}
+
+    } else {
+      print("solicitud con exito");
+    }
+  }
 }
+
+
 
 /*class NuevoGrupo extends StatefulWidget {
   NuevoGrupo({Key key}) : super(key: key);

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:grupos_estudio_app/model/m_usuario.dart';
+import 'package:grupos_estudio_app/model/user.dart';
 
 import 'Button_Inicio.dart';
   Widget appBaner(BuildContext context){
+    MUsuario _usuer;
      return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -18,7 +21,7 @@ import 'Button_Inicio.dart';
                         backgroundColor: Colors.yellow[400],
                       ),
                     ),
-                   Text('Nombre Apeido ' ,textAlign: TextAlign.center , style: TextStyle(color: Colors.red[300], fontSize: 25),)
+                   Text("ALMA" ,textAlign: TextAlign.center , style: TextStyle(color: Colors.red[300], fontSize: 25),)
                     
                         ],
                       )

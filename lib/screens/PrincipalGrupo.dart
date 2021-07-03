@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grupos_estudio_app/model/modeloSala.dart';
+import 'package:grupos_estudio_app/services/grupos.dart';
 import 'package:grupos_estudio_app/src/pages/Salas.dart';
 import 'package:grupos_estudio_app/src/pages/contenidoSala.dart';
 import 'package:grupos_estudio_app/widgets/TarjetaBoton.dart';

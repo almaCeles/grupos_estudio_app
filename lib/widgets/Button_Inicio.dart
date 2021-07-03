@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 Widget bnMisGrupos(BuildContext context){
   return MaterialButton(
@@ -20,7 +21,7 @@ Widget bnPrivado(BuildContext context){
   return  MaterialButton(
                   minWidth: 215.0,
                   height: 60.0,
-                  onPressed: () {},
+                  onPressed: () {Navigator.pushNamed(context,'nuevoGrupoCodigo');},
                   color: Color.fromRGBO(91, 114, 152, 1.0),
                   child: Row( mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,

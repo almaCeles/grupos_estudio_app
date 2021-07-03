@@ -1,42 +1,38 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:grupos_estudio_app/controladores/grupos.dart';
+import 'package:get/get.dart';
 import 'package:grupos_estudio_app/model/m_Grupos_Creador.dart';
-import 'package:grupos_estudio_app/services/grupos.dart';
 import 'package:grupos_estudio_app/widgets/custom_bottom_navigation.dart';
-import 'package:grupos_estudio_app/src/providers/menu_provider.dart';
-import 'package:grupos_estudio_app/src/utils/icono_string_util.dart';
 import 'package:grupos_estudio_app/widgets/custom_cuadrado_grupos.dart';
 
-class Grupos extends StatefulWidget {
-  Grupos({Key key}) : super(key: key);
+class ListGruposCreados extends StatefulWidget {
 
   @override
-  _GruposState createState() => _GruposState();
+  _ListGruposCreadosState createState() => _ListGruposCreadosState();
 }
 
-class _GruposState extends State<Grupos> with SingleTickerProviderStateMixin  {
+class _ListGruposCreadosState extends State<ListGruposCreados> with SingleTickerProviderStateMixin {
 
-
-  List<GruposCreador> _gruposCreados = [];
-  
-  void arre()async{
-    final data = await gruposServices.instanse.getGruposCreados();
-    this._gruposCreados = data;
-  }
-
-  TabController _tabBarOption;
+TabController _tabBarOption;
   @override
   void initState() {
- 
     super.initState();
-    _tabBarOption = TabController(vsync: this, length: 2, initialIndex: 0);
-    arre();
+    _tabBarOption = TabController( length: 2, initialIndex: 0, vsync: this);
   }
 
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GetBuilder<ContoladorGrupo>(
+      id: 'gruposCreados',
+      builder: (_){
+        if(_.loading){
+            return Center(
+              child: LinearProgressIndicator(),
+            );
+        }
+        return Scaffold(
       backgroundColor: Color.fromRGBO(69, 79, 95, 1.0),
       appBar:AppBar(
          title: Text('Grupos' ,style: TextStyle(color: Colors.white , fontSize: 20),),
@@ -82,7 +78,26 @@ class _GruposState extends State<Grupos> with SingleTickerProviderStateMixin  {
                 topRight: Radius.circular(40.0)
               ),
             ),
-            child: _targetas(context)
+            child: GridView.builder(
+              itemCount: _.gruposCreados ==null ? 0 : _.gruposCreados.length,
+              itemBuilder:(context, index){
+                final GruposCreador grCreado= _.gruposCreados[index];
+
+                print(
+                  "grupos: ${{
+                    [
+                      {
+                         grCreado.nombre,
+                         grCreado.carrera,
+                         grCreado.fechaCreacion
+                      }
+                    ]
+                  }}"
+                );
+                return 
+                mygridIdems(context ,'usuario',grCreado.nombre, "https://sites.google.com/site/precalculoupaep/_/rsrc/1412911484804/otono-2014/derivadas/1.png", Colors.blue[400] , Colors.grey[300]);
+              } )
+             
           )),
      
        
@@ -104,41 +119,39 @@ class _GruposState extends State<Grupos> with SingleTickerProviderStateMixin  {
      
       bottomNavigationBar: CustomNavigationBar(),
     );
-  }
-  Widget _targetas(BuildContext context) {
-    print("dentro de metodo targetas");
-    return ListView.builder(
-      padding: EdgeInsets.all(16.0),
-      
-           itemCount: _gruposCreados.length,
-           itemBuilder: (BuildContext c, int index){
-                print("list bulder");
-                if(_gruposCreados.length > 0){
-             print("que paso?");
-          print(_gruposCreados[index].creador);
-          return mygridIdems(
-              c,
-              'usuarios',
-              _gruposCreados[index].nombre,
-              "https://www.muycomputer.com/wp-content/uploads/2019/01/lenguaje-de-programaci%C3%B3n.jpg",
-              Colors.amber,
-              Colors.grey[300]);    
-                }else{
-                  print("vacio no has creado grupos");
-                }
-           
-                  
-
-              
-            
-             
-           },
-
-        );
+      },
+    );
   }
 }
 
 
+Widget _targetas(BuildContext context){
+  return GridView.count(
+    crossAxisCount:1,
+    padding: EdgeInsets.all(16.0),
+    childAspectRatio: 3.0,
+    crossAxisSpacing: 10.0,
+    mainAxisSpacing: 10.0,
+    children: <Widget>[
+       mygridIdems(context ,'animate',"Derivadas", "https://sites.google.com/site/precalculoupaep/_/rsrc/1412911484804/otono-2014/derivadas/1.png", Colors.blue[400] , Colors.grey[300]),
+       mygridIdems(
+          context,
+          'animate',
+          "Intgrales",
+          "https://sites.google.com/site/precalculoupaep/_/rsrc/1412911484804/otono-2014/derivadas/1.png",
+          Colors.green[400],
+          Colors.grey[300]),
+        mygridIdems(
+          context,
+          'animate',
+          "Java",
+          "https://sites.google.com/site/precalculoupaep/_/rsrc/1412911484804/otono-2014/derivadas/1.png",
+          Colors.pink[400],
+          Colors.grey[300]),
+
+    ],
+    );
+}
 
 Widget _lista(BuildContext context){
      return GridView.count(
@@ -151,45 +164,10 @@ Widget _lista(BuildContext context){
        mygridIdems(context ,'usuarios',"Programacion", "https://www.muycomputer.com/wp-content/uploads/2019/01/lenguaje-de-programaci%C3%B3n.jpg", Colors.amber , Colors.grey[300]),
        mygridIdems(context ,'usuarios',"Unity", "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2020/02/unity-logo-1879391.png", Colors.red , Colors.grey[300]),
        mygridIdems(context ,'usuarios',"Programacion", "https://www.linuxadictos.com/wp-content/uploads/python-logo-1.jpg.webp", Colors.black , Colors.grey[300]),
-      
+
     ],
     );
         
      
    }
 
-/*Widget _lista(){
-     //print( menuProvider.opciones);
-     return FutureBuilder(
-       future: menuProvider.cargarData(),
-       initialData: [],
-       builder: (context, AsyncSnapshot<List<dynamic>> snapshot  ){
-           
-         
-          return ListView(
-            children: _listaItems(snapshot.data, context),
-          );
-       },
-     );
-        
-     
-   }
-List<Widget> _listaItems(List<dynamic> data , BuildContext context ) {
-     final List<Widget> opciones =[];
-
-     data.forEach((opt) { 
-       final widgetTemp =ListTile(
-         title: Text(opt[ 'texto']),
-         leading: getIcon(opt['icon']),
-         trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
-         onTap: (){
-           Navigator.pushNamed(context, opt['ruta']);
-         },
-       );
-
-       opciones..add(widgetTemp)
-               ..add(Divider());
-     });
-
-     return opciones;
-  }*/
